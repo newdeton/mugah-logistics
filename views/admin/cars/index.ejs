@@ -1,34 +1,94 @@
 <%- include("../partials/header") %>
-
 <%- include("../partials/sidebar") %>
-
 <%- include("../partials/topbar") %>
 
 <div class="container-fluid">
 
-<div class="d-flex justify-content-between mb-4">
+<div class="d-flex justify-content-between align-items-center mb-4">
 
-<h2>Vehicles</h2>
+    <h3>Vehicles</h3>
 
-<a href="/admin/cars/add" class="btn btn-warning">
-
-<i class="fas fa-plus"></i>
-
-Add Vehicle
-
-</a>
+    <a href="/admin/cars/add" class="btn btn-warning">
+        + Add Vehicle
+    </a>
 
 </div>
 
-<% if(cars.length===0){ %>
+<div class="card shadow p-3">
 
-<div class="alert alert-info">
+    <% if (cars.length === 0) { %>
 
-No vehicles found.
+        <p class="text-muted">No vehicles added yet.</p>
+
+    <% } else { %>
+
+    <table class="table table-hover align-middle">
+
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Brand</th>
+                <th>Category</th>
+                <th>Rate/Day</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <% cars.forEach(car => { %>
+
+            <tr>
+
+                <!-- Image -->
+                <td>
+                    <% if (car.images && car.images.length > 0) { %>
+                        <img src="<%= car.images[0] %>" width="70" height="50" style="object-fit:cover;border-radius:8px;">
+                    <% } else { %>
+                        <span class="text-muted">No image</span>
+                    <% } %>
+                </td>
+
+                <td><%= car.name %></td>
+                <td><%= car.brand %></td>
+                <td><%= car.category %></td>
+                <td>KSh <%= car.dailyRate %></td>
+
+                <td>
+                    <% if (car.available) { %>
+                        <span class="badge bg-success">Available</span>
+                    <% } else { %>
+                        <span class="badge bg-danger">Booked</span>
+                    <% } %>
+                </td>
+
+                <td>
+
+                    <a href="/admin/cars/edit/<%= car._id %>" class="btn btn-sm btn-primary">
+                        Edit
+                    </a>
+
+                    <form action="/admin/cars/delete/<%= car._id %>" method="POST" style="display:inline;">
+                        <button class="btn btn-sm btn-danger">
+                            Delete
+                        </button>
+                    </form>
+
+                </td>
+
+            </tr>
+
+            <% }) %>
+
+        </tbody>
+
+    </table>
+
+    <% } %>
 
 </div>
-
-<% } %>
 
 </div>
 

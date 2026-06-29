@@ -1,22 +1,117 @@
 <%- include("../partials/header") %>
-
 <%- include("../partials/sidebar") %>
-
 <%- include("../partials/topbar") %>
 
 <div class="container-fluid">
 
-<h2 class="mb-4">
+<div class="card shadow p-4">
 
-Add Vehicle
+    <h3 class="mb-4">Add New Vehicle</h3>
 
-</h2>
+    <form action="/admin/cars/add" method="POST" enctype="multipart/form-data">
 
-<p>
+        <div class="row">
 
-Vehicle form coming next...
+            <!-- Basic Info -->
+            <div class="col-md-6 mb-3">
+                <label>Vehicle Name</label>
+                <input type="text" name="name" class="form-control" required>
+            </div>
 
-</p>
+            <div class="col-md-6 mb-3">
+                <label>Brand</label>
+                <input type="text" name="brand" class="form-control" required>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label>Category</label>
+                <select name="category" class="form-control" required>
+                    <option>Sedan</option>
+                    <option>SUV</option>
+                    <option>Van</option>
+                    <option>Pickup</option>
+                    <option>Luxury</option>
+                    <option>Bus</option>
+                </select>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label>Year</label>
+                <input type="number" name="year" class="form-control">
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label>Registration Number</label>
+                <input type="text" name="registrationNumber" class="form-control" required>
+            </div>
+
+            <!-- Pricing -->
+            <div class="col-md-4 mb-3">
+                <label>Daily Rate (KSh)</label>
+                <input type="number" name="dailyRate" class="form-control" required>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label>Weekly Rate</label>
+                <input type="number" name="weeklyRate" class="form-control">
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label>Monthly Rate</label>
+                <input type="number" name="monthlyRate" class="form-control">
+            </div>
+
+            <!-- Specs -->
+            <div class="col-md-4 mb-3">
+                <label>Seats</label>
+                <input type="number" name="seats" class="form-control">
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label>Transmission</label>
+                <select name="transmission" class="form-control">
+                    <option>Automatic</option>
+                    <option>Manual</option>
+                </select>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label>Fuel Type</label>
+                <select name="fuelType" class="form-control">
+                    <option>Petrol</option>
+                    <option>Diesel</option>
+                    <option>Hybrid</option>
+                    <option>Electric</option>
+                </select>
+            </div>
+
+            <!-- Features -->
+            <div class="col-md-12 mb-3">
+                <label>Features (comma separated)</label>
+                <input type="text" name="features" class="form-control" placeholder="AC, Bluetooth, GPS, Sunroof">
+            </div>
+
+            <!-- Description -->
+            <div class="col-md-12 mb-3">
+                <label>Description</label>
+                <textarea name="description" class="form-control" rows="4"></textarea>
+            </div>
+
+            <!-- Images -->
+            <div class="col-md-12 mb-3">
+                <label>Vehicle Images</label>
+                <input type="file" name="images" class="form-control" multiple required>
+            </div>
+
+        </div>
+
+        <button class="btn btn-warning mt-3">
+            Save Vehicle
+        </button>
+
+    </form>
+
+</div>
 
 </div>
 
