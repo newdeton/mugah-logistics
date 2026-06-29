@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Login</title>
+
+<link rel="stylesheet" href="/css/admin.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="login-card">
+
+    <div class="logo">
+
+        MUGAH <span>LOGISTICS</span>
+
+    </div>
+
+    <p class="subtitle">
+
+        Administrator Login
+
+    </p>
+
+    <form action="/admin/login" method="POST">
+
+        <div class="input-group">
+
+            <label>Email</label>
+
+            <input
+                type="email"
+                name="email"
+                required
+            >
+
+        </div>
+
+        <div class="input-group">
+
+            <label>Password</label>
+
+            <input
+                type="password"
+                name="password"
+                required
+            >
+
+        </div>
+
+        <button class="btn-login">
+
+            Login
+
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+
+</html>

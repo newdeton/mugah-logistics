@@ -1,0 +1,35 @@
+<%- include("../partials/header") %>
+
+<%- include("../partials/sidebar") %>
+
+<%- include("../partials/topbar") %>
+
+<div class="container-fluid">
+
+<div class="d-flex justify-content-between mb-4">
+
+<h2>Vehicles</h2>
+
+<a href="/admin/cars/add" class="btn btn-warning">
+
+<i class="fas fa-plus"></i>
+
+Add Vehicle
+
+</a>
+
+</div>
+
+<% if(cars.length===0){ %>
+
+<div class="alert alert-info">
+
+No vehicles found.
+
+</div>
+
+<% } %>
+
+</div>
+
+<%- include("../partials/footer") %>

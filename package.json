@@ -1,0 +1,46 @@
+{
+  "name": "mugah-logistics",
+  "version": "1.0.0",
+  "description": "Professional car hire and booking platform for MUGAH LOGISTICS",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "seed:admin": "node seed/seedAdmin.js"
+  },
+  "keywords": [
+    "car-hire",
+    "car-rental",
+    "booking",
+    "logistics",
+    "express",
+    "mongodb",
+    "cloudinary"
+  ],
+  "author": "Joe",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cloudinary": "^1.41.3",
+    "compression": "^1.8.1",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^6.0.0",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^17.4.2",
+    "ejs": "^3.1.10",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "express-validator": "^7.3.2",
+    "helmet": "^8.2.0",
+    "jsonwebtoken": "^9.0.3",
+    "method-override": "^3.0.0",
+    "mongoose": "^9.7.3",
+    "morgan": "^1.11.0",
+    "multer": "^2.2.0",
+    "multer-storage-cloudinary": "^4.0.0",
+    "nodemailer": "^7.0.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
