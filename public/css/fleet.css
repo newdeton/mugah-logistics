@@ -1,0 +1,112 @@
+/* =====================================
+   FLEET PAGE
+===================================== */
+
+.fleet-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+    gap:30px;
+    padding:60px 8%;
+}
+
+.fleet-card{
+    background:#fff;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+    transition:.35s;
+}
+
+.fleet-card:hover{
+    transform:translateY(-8px);
+}
+
+.fleet-image{
+    position:relative;
+}
+
+.fleet-image img{
+    width:100%;
+    height:240px;
+    object-fit:cover;
+}
+
+.status{
+    position:absolute;
+    top:18px;
+    right:18px;
+    padding:8px 14px;
+    border-radius:30px;
+    color:#fff;
+    font-size:13px;
+    font-weight:600;
+}
+
+.available{
+    background:#28a745;
+}
+
+.booked{
+    background:#dc3545;
+}
+
+.fleet-body{
+    padding:25px;
+}
+
+.brand{
+    color:#777;
+    margin:10px 0 20px;
+}
+
+.specs{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:25px;
+}
+
+.specs span{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    color:#555;
+}
+
+.price{
+    font-size:30px;
+    color:#d4af37;
+    font-weight:700;
+    margin-bottom:25px;
+}
+
+.price small{
+    font-size:15px;
+    color:#666;
+}
+
+.fleet-buttons{
+    display:flex;
+    gap:15px;
+}
+
+.fleet-buttons a{
+    flex:1;
+    text-align:center;
+}
+
+@media(max-width:768px){
+
+    .fleet-grid{
+
+        grid-template-columns:1fr;
+        padding:35px 20px;
+
+    }
+
+    .fleet-buttons{
+
+        flex-direction:column;
+
+    }
+
+}

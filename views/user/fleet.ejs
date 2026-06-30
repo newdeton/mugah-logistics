@@ -1,4 +1,5 @@
 <%- include("../partials/header") %>
+<link rel="stylesheet" href="/css/fleet.css">
 
 <!-- Fleet Hero -->
 <section class="fleet-hero">
@@ -15,6 +16,8 @@
         </p>
 
     </div>
+
+    </section>
 
 <section class="fleet-search">
 
@@ -134,59 +137,85 @@
 
             <% cars.forEach(car => { %>
 
-                <div class="car-card">
+                <div class="fleet-card">
 
-                    <img
-                        src="<%= car.images.length ? car.images[0] : '/images/no-car.jpg' %>"
-                        alt="<%= car.name %>">
+    <div class="fleet-image">
 
-                    <div class="car-info">
+        <img src="<%= car.images.length ? car.images[0] : '/images/no-car.jpg' %>"
+             alt="<%= car.name %>">
 
-                        <h3><%= car.name %></h3>
+        <% if(car.available){ %>
 
-                        <p class="price">
-                            KSh <%= car.dailyRate.toLocaleString() %> / Day
-                        </p>
+            <span class="status available">
+                <i class="fas fa-circle"></i>
+                Available
+            </span>
 
-                        <div class="features">
+        <% } else { %>
 
-                            <span>👥 <%= car.seats %> Seats</span>
+            <span class="status booked">
+                <i class="fas fa-circle"></i>
+                Booked
+            </span>
 
-                            <span>⚙ <%= car.transmission %></span>
+        <% } %>
 
-                            <span>⛽ <%= car.fuelType %></span>
+    </div>
 
-                        </div>
+    <div class="fleet-body">
 
-                        <% if(car.available){ %>
+        <h3><%= car.name %></h3>
 
-                            <span class="badge available">
-                                Available
-                            </span>
+        <p class="brand">
+            <%= car.brand %> • <%= car.category %>
+        </p>
 
-                        <% } else { %>
+        <div class="specs">
 
-                            <span class="badge booked">
-                                Booked
-                            </span>
+            <span>
+                <i class="fas fa-users"></i>
+                <%= car.seats %>
+            </span>
 
-                        <% } %>
+            <span>
+                <i class="fas fa-gas-pump"></i>
+                <%= car.fuelType %>
+            </span>
 
-                        <div class="card-buttons">
+            <span>
+                <i class="fas fa-gear"></i>
+                <%= car.transmission %>
+            </span>
 
-                            <a href="/fleet/<%= car._id %>" class="btn-outline">
-    View Details
-</a>
+        </div>
 
-                            <a href="/booking/<%= car._id %>" class="btn">
-                                Book Now
-                            </a>
+        <div class="price">
 
-                        </div>
+            KSh <%= car.dailyRate.toLocaleString() %>
 
-                    </div>
+            <small>/day</small>
 
-                </div>
+        </div>
+
+        <div class="fleet-buttons">
+
+            <a href="/fleet/<%= car._id %>" class="btn-outline">
+                View Details
+            </a>
+
+            <% if(car.available){ %>
+
+                <a href="/booking/<%= car._id %>" class="btn">
+                    Book Now
+                </a>
+
+            <% } %>
+
+        </div>
+
+    </div>
+
+</div>
 
             <% }) %>
 
