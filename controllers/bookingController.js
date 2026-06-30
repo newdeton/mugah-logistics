@@ -55,6 +55,20 @@ exports.store = async (req, res) => {
 
         const totalAmount = days * car.dailyRate;
 
+        const existingBooking = await Booking.findOne({
+    car: car._id,
+    status: { $in: ["Pending", "Approved"] },
+    pickupDate: { $lte: req.body.returnDate },
+    returnDate: { $gte: req.body.pickupDate }
+});
+
+if (existingBooking) {
+    return res.render("user/booking", {
+        car,
+        error: "Sorry, this vehicle is already booked for the selected dates."
+    });
+}
+
         await Booking.create({
 
             car: car._id,

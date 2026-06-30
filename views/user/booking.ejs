@@ -32,7 +32,15 @@
         <div class="booking-form">
 
             <h2>Book This Vehicle</h2>
+<% if (typeof error !== "undefined") { %>
 
+<div class="alert alert-danger">
+
+    <%= error %>
+
+</div>
+
+<% } %>
             <form action="/booking/<%= car._id %>" method="POST">
 
                 <input
