@@ -10,13 +10,18 @@ body{
 }
 
 .navbar{
-    position:absolute;
-    width:100%;
-    padding:20px 8%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    z-index:100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+
+    background: #111;              /* Dark background */
+    box-shadow: 0 5px 20px rgba(0,0,0,.15);
 }
 
 .logo{
@@ -26,7 +31,8 @@ body{
 }
 
 .logo span{
-    color:#f59e0b;
+    color: #fff;
+    font-weight: 700;
 }
 
 .nav-links{
@@ -36,13 +42,13 @@ body{
 }
 
 .nav-links a{
-    color:white;
-    text-decoration:none;
-    transition:.3s;
+    color: #fff;
+    text-decoration: none;
+    transition: .3s;
 }
 
 .nav-links a:hover{
-    color:#f59e0b;
+    color: #d4af37;   /* Gold */
 }
 
 .book-btn{
@@ -934,5 +940,151 @@ border-radius:8px;
 .fleet-search button{
 
 width:100%;
+
+}
+
+/* Pricing Page */
+
+.pricing-section{
+
+padding:80px 8%;
+
+}
+
+.pricing-table{
+
+overflow-x:auto;
+
+}
+
+.pricing-table table{
+
+width:100%;
+
+border-collapse:collapse;
+
+background:#fff;
+
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+border-radius:12px;
+
+overflow:hidden;
+
+}
+
+.pricing-table th{
+
+background:#111;
+
+color:#fff;
+
+padding:18px;
+
+text-align:left;
+
+}
+
+.pricing-table td{
+
+padding:18px;
+
+border-bottom:1px solid #eee;
+
+}
+
+.pricing-table tr:hover{
+
+background:#fafafa;
+
+}
+
+.pricing-info{
+
+padding:0 8% 80px;
+
+}
+
+.pricing-box{
+
+background:#fff;
+
+padding:40px;
+
+border-radius:12px;
+
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+text-align:center;
+
+}
+
+.pricing-box ul{
+
+list-style:none;
+
+padding:25px 0;
+
+}
+
+.pricing-box li{
+
+padding:10px 0;
+
+font-size:17px;
+
+}
+
+.page-header,
+.fleet-hero,
+.vehicle-details{
+
+    padding-top: 120px;
+
+}
+
+.main-image img{
+
+    width:100%;
+
+    border-radius:12px;
+
+}
+
+.thumbnail-gallery{
+
+    display:flex;
+
+    gap:12px;
+
+    margin-top:15px;
+
+    flex-wrap:wrap;
+
+}
+
+.thumb{
+
+    width:100px;
+
+    height:75px;
+
+    object-fit:cover;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    border:2px solid transparent;
+
+    transition:.3s;
+
+}
+
+.thumb:hover{
+
+    border-color:#d4af37;
+
+    transform:scale(1.05);
 
 }

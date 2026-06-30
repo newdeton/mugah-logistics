@@ -1,0 +1,113 @@
+<%- include("partials/header") %>
+
+<%- include("partials/sidebar") %>
+
+<div class="main-content">
+
+<%- include("partials/topbar") %>
+
+<div class="container-fluid">
+
+<h2 class="mb-4">Customer Reviews</h2>
+
+<div class="card shadow">
+
+<div class="card-body">
+
+<table class="table table-striped">
+
+<thead>
+
+<tr>
+
+<th>Name</th>
+
+<th>Rating</th>
+
+<th>Message</th>
+
+<th>Status</th>
+
+<th>Actions</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<% reviews.forEach(review => { %>
+
+<tr>
+
+<td><%= review.fullName %></td>
+
+<td>
+
+<%= review.rating %> ⭐
+
+</td>
+
+<td><%= review.message %></td>
+
+<td>
+
+<% if(review.approved){ %>
+
+<span class="badge bg-success">Approved</span>
+
+<% }else{ %>
+
+<span class="badge bg-warning text-dark">Pending</span>
+
+<% } %>
+
+</td>
+
+<td>
+
+<% if(!review.approved){ %>
+
+<form action="/admin/reviews/approve/<%= review._id %>" method="POST" style="display:inline;">
+
+<button class="btn btn-success btn-sm">
+
+Approve
+
+</button>
+
+</form>
+
+<% } %>
+
+<form action="/admin/reviews/delete/<%= review._id %>" method="POST" style="display:inline;">
+
+<button class="btn btn-danger btn-sm"
+
+onclick="return confirm('Delete this review?')">
+
+Delete
+
+</button>
+
+</form>
+
+</td>
+
+</tr>
+
+<% }) %>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<%- include("partials/footer") %>

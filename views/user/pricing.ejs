@@ -4,11 +4,11 @@
 
     <div class="page-content">
 
-        <h1>Vehicle Pricing</h1>
+        <h1>Pricing</h1>
 
         <p>
 
-            Transparent pricing with no hidden charges.
+            Transparent pricing with no hidden charges. Choose the package that suits your travel needs.
 
         </p>
 
@@ -18,73 +18,109 @@
 
 <section class="pricing-section">
 
-    <% if(cars.length > 0){ %>
+    <div class="pricing-table">
 
-        <div class="pricing-grid">
+        <table>
 
-            <% cars.forEach(car=>{ %>
+            <thead>
 
-                <div class="pricing-card">
+                <tr>
 
-                    <img
-                        src="<%= car.images.length ? car.images[0] : '/images/no-car.jpg' %>"
-                        alt="<%= car.name %>">
+                    <th>Vehicle Category</th>
+                    <th>Daily Rate</th>
+                    <th>Weekly Rate</th>
+                    <th>Monthly Rate</th>
 
-                    <h2><%= car.name %></h2>
+                </tr>
 
-                    <p><%= car.category %></p>
+            </thead>
 
-                    <h3>
+            <tbody>
 
-                        KSh <%= car.dailyRate.toLocaleString() %>
+                <tr>
 
-                        <small>/ Day</small>
+                    <td>Sedan</td>
+                    <td>From KSh 3,000</td>
+                    <td>From KSh 18,000</td>
+                    <td>From KSh 70,000</td>
 
-                    </h3>
+                </tr>
 
-                    <% if(car.weeklyRate){ %>
+                <tr>
 
-                        <p>
+                    <td>SUV</td>
+                    <td>From KSh 8,000</td>
+                    <td>From KSh 50,000</td>
+                    <td>From KSh 180,000</td>
 
-                            Weekly:
-                            KSh <%= car.weeklyRate.toLocaleString() %>
+                </tr>
 
-                        </p>
+                <tr>
 
-                    <% } %>
+                    <td>Van</td>
+                    <td>From KSh 6,500</td>
+                    <td>From KSh 40,000</td>
+                    <td>From KSh 150,000</td>
 
-                    <% if(car.monthlyRate){ %>
+                </tr>
 
-                        <p>
+                <tr>
 
-                            Monthly:
-                            KSh <%= car.monthlyRate.toLocaleString() %>
+                    <td>Pickup</td>
+                    <td>From KSh 7,000</td>
+                    <td>From KSh 42,000</td>
+                    <td>From KSh 160,000</td>
 
-                        </p>
+                </tr>
 
-                    <% } %>
+                <tr>
 
-                    <a
-                        href="/fleet/<%= car._id %>"
-                        class="btn">
+                    <td>Luxury</td>
+                    <td>From KSh 15,000</td>
+                    <td>Contact Us</td>
+                    <td>Contact Us</td>
 
-                        View Vehicle
+                </tr>
 
-                    </a>
+                <tr>
 
-                </div>
+                    <td>Bus</td>
+                    <td>Contact Us</td>
+                    <td>Contact Us</td>
+                    <td>Contact Us</td>
 
-            <% }) %>
+                </tr>
 
-        </div>
+            </tbody>
 
-    <% } else { %>
+        </table>
 
-        <h2 style="text-align:center;">
-            No pricing available.
-        </h2>
+    </div>
 
-    <% } %>
+</section>
+
+<section class="pricing-info">
+
+    <div class="pricing-box">
+
+        <h2>What's Included</h2>
+
+        <ul>
+
+            <li>✔ Well-maintained vehicles</li>
+            <li>✔ 24/7 customer support</li>
+            <li>✔ Flexible rental periods</li>
+            <li>✔ Comprehensive insurance options</li>
+            <li>✔ Airport pickup & drop-off available</li>
+            <li>✔ Corporate and long-term rental packages</li>
+
+        </ul>
+
+        <a href="/fleet" class="btn">
+    View Our Fleet
+</a>
+
+    </div>
 
 </section>
 

@@ -15,18 +15,38 @@
 
         <div class="booking-summary">
 
-            <h3>Booking Summary</h3>
+    <h3>Booking Summary</h3>
 
-            <p><strong>Vehicle:</strong> <%= car.name %></p>
+    <% if(car){ %>
 
-            <p><strong>Brand:</strong> <%= car.brand %></p>
+        <p>
+            <strong>Vehicle:</strong>
+            <%= car.name %>
+        </p>
 
-            <p>
-                <strong>Estimated Total:</strong>
-                KSh <%= totalAmount.toLocaleString() %>
-            </p>
+        <p>
+            <strong>Brand:</strong>
+            <%= car.brand %>
+        </p>
 
-        </div>
+        <p>
+            <strong>Estimated Total:</strong>
+            KSh <%= totalAmount.toLocaleString() %>
+        </p>
+
+    <% } else { %>
+
+        <p>
+            Your vehicle request has been received successfully.
+        </p>
+
+        <p>
+            Our team will review your requested vehicle and contact you with availability and pricing.
+        </p>
+
+    <% } %>
+
+</div>
 
         <p>
             Our team will contact you shortly to confirm your booking and payment details.

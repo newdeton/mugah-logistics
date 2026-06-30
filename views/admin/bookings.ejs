@@ -148,52 +148,41 @@
 
                             <td>
 
-                                <% if(booking.status==="Pending"){ %>
+                                <% if (booking.status === "Pending") { %>
 
-                                    <form
-                                    action="/admin/bookings/approve/<%= booking._id %>"
-                                    method="POST"
-                                    style="display:inline;">
+    <a href="/admin/bookings/approve/<%= booking._id %>" class="btn btn-success btn-sm">
+        Approve
+    </a>
 
-                                        <button class="btn btn-success btn-sm">
+    <a href="/admin/bookings/reject/<%= booking._id %>" class="btn btn-danger btn-sm">
+        Reject
+    </a>
 
-                                            Approve
+<% } %>
 
-                                        </button>
+<% if (booking.status === "Approved") { %>
 
-                                    </form>
+    <a href="/admin/bookings/complete/<%= booking._id %>" class="btn btn-primary btn-sm">
+        Complete
+    </a>
 
-                                    <form
-                                    action="/admin/bookings/reject/<%= booking._id %>"
-                                    method="POST"
-                                    style="display:inline;">
+<% } %>
 
-                                        <button class="btn btn-danger btn-sm">
+<% if (booking.status === "Completed" || booking.status === "Rejected") { %>
 
-                                            Reject
+    <form action="/admin/bookings/delete/<%= booking._id %>" method="POST" style="display:inline;">
 
-                                        </button>
+        <button
+            class="btn btn-dark btn-sm"
+            onclick="return confirm('Delete this booking permanently?')">
 
-                                    </form>
+            Delete
 
-                                <% } %>
+        </button>
 
-                                <% if(booking.status==="Approved"){ %>
+    </form>
 
-                                    <form
-                                    action="/admin/bookings/complete/<%= booking._id %>"
-                                    method="POST"
-                                    style="display:inline;">
-
-                                        <button class="btn btn-primary btn-sm">
-
-                                            Complete
-
-                                        </button>
-
-                                    </form>
-
-                                <% } %>
+<% } %>
 
                             </td>
 

@@ -16,4 +16,6 @@ router.post("/reject/:id", auth, bookingController.rejectBooking);
 // Complete booking
 router.post("/complete/:id", auth, bookingController.completeBooking);
 
+// Delete booking
+router.post("/delete/:id", bookingController.deleteBooking);
 module.exports = router;

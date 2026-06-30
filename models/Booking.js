@@ -2,12 +2,14 @@ const mongoose = require("mongoose");
 
 const bookingSchema = new mongoose.Schema({
 
+    // Optional if booking is for a listed fleet vehicle
     car: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Car",
-        required: true
+        default: null
     },
 
+    // Customer Information
     fullName: {
         type: String,
         required: true,
@@ -24,6 +26,20 @@ const bookingSchema = new mongoose.Schema({
         required: true
     },
 
+    // Vehicle Request (for vehicles not in fleet)
+
+    requestedCategory: String,
+
+    requestedBrand: String,
+
+    requestedModel: String,
+
+    requestedTransmission: String,
+
+    requestedSeats: Number,
+
+    // Booking Details
+
     pickupLocation: {
         type: String,
         required: true
@@ -39,9 +55,17 @@ const bookingSchema = new mongoose.Schema({
         required: true
     },
 
+    driverRequired: {
+        type: Boolean,
+        default: false
+    },
+
     notes: String,
 
-    totalAmount: Number,
+    totalAmount: {
+        type: Number,
+        default: 0
+    },
 
     status: {
         type: String,

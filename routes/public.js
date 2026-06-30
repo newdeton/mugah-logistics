@@ -18,4 +18,14 @@ router.get("/about", publicController.about);
 // Contact
 router.get("/contact", publicController.contact);
 
+// pricing
+router.get("/pricing", publicController.pricing);
+
+const reviewController = require("../controllers/reviewController");
+
+// Review page
+router.get("/reviews", reviewController.reviewPage);
+
+// Submit review
+router.post("/reviews", reviewController.store);
 module.exports = router;

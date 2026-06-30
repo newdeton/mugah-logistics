@@ -2,15 +2,26 @@ const mongoose = require("mongoose");
 
 const reviewSchema = new mongoose.Schema({
 
-    name: String,
+    fullName: {
+        type: String,
+        required: true
+    },
+
+    email: {
+        type: String
+    },
 
     rating: {
         type: Number,
+        required: true,
         min: 1,
         max: 5
     },
 
-    message: String,
+    message: {
+        type: String,
+        required: true
+    },
 
     approved: {
         type: Boolean,

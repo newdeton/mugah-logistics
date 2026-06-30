@@ -38,11 +38,39 @@
 
 </select>
 
-    <input
-        type="text"
-        name="brand"
-        placeholder="Brand"
-        value="<%= filters.brand || '' %>">
+    <select name="brand">
+
+    <option value="">All Brands</option>
+
+    <option value="Toyota" <%= filters.brand === "Toyota" ? "selected" : "" %>>Toyota</option>
+
+    <option value="Nissan" <%= filters.brand === "Nissan" ? "selected" : "" %>>Nissan</option>
+
+    <option value="Mazda" <%= filters.brand === "Mazda" ? "selected" : "" %>>Mazda</option>
+
+    <option value="Subaru" <%= filters.brand === "Subaru" ? "selected" : "" %>>Subaru</option>
+
+    <option value="Mercedes-Benz" <%= filters.brand === "Mercedes-Benz" ? "selected" : "" %>>Mercedes-Benz</option>
+
+    <option value="BMW" <%= filters.brand === "BMW" ? "selected" : "" %>>BMW</option>
+
+    <option value="Audi" <%= filters.brand === "Audi" ? "selected" : "" %>>Audi</option>
+
+    <option value="Volkswagen" <%= filters.brand === "Volkswagen" ? "selected" : "" %>>Volkswagen</option>
+
+    <option value="Land Rover" <%= filters.brand === "Land Rover" ? "selected" : "" %>>Land Rover</option>
+
+    <option value="Lexus" <%= filters.brand === "Lexus" ? "selected" : "" %>>Lexus</option>
+
+    <option value="Mitsubishi" <%= filters.brand === "Mitsubishi" ? "selected" : "" %>>Mitsubishi</option>
+
+    <option value="Isuzu" <%= filters.brand === "Isuzu" ? "selected" : "" %>>Isuzu</option>
+
+    <option value="Ford" <%= filters.brand === "Ford" ? "selected" : "" %>>Ford</option>
+
+    <option value="Honda" <%= filters.brand === "Honda" ? "selected" : "" %>>Honda</option>
+
+</select>
 
     <select name="transmission">
 

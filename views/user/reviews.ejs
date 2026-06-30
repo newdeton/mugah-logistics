@@ -1,0 +1,64 @@
+<%- include("../partials/header") %>
+
+<section class="container" style="padding:120px 8% 60px;">
+
+<div class="booking-form" style="max-width:700px;margin:auto;">
+
+<h1 style="text-align:center;margin-bottom:10px;">
+Leave a Review
+</h1>
+
+<p style="text-align:center;color:#777;margin-bottom:30px;">
+We value your feedback. Tell us about your experience with MUGAH LOGISTICS.
+</p>
+
+<form action="/reviews" method="POST">
+
+<input
+type="text"
+name="fullName"
+placeholder="Full Name"
+required>
+
+<input
+type="email"
+name="email"
+placeholder="Email Address (Optional)">
+
+<label>Rating</label>
+
+<select name="rating" required>
+
+<option value="">Select Rating</option>
+
+<option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+
+<option value="4">⭐⭐⭐⭐ Very Good</option>
+
+<option value="3">⭐⭐⭐ Good</option>
+
+<option value="2">⭐⭐ Fair</option>
+
+<option value="1">⭐ Poor</option>
+
+</select>
+
+<textarea
+name="message"
+rows="6"
+placeholder="Write your review..."
+required></textarea>
+
+<button class="btn">
+
+Submit Review
+
+</button>
+
+</form>
+
+</div>
+
+</section>
+
+<%- include("../partials/footer") %>

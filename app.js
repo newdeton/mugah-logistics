@@ -5,6 +5,7 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo").default;
 const methodOverride = require("method-override");
 
+
 dotenv.config();
 
 const connectDB = require("./config/db");
@@ -54,7 +55,7 @@ const adminRoutes = require("./routes/admin");
 const carRoutes = require("./routes/cars");
 const adminBookingRoutes = require("./routes/adminBookings");
 const bookingRoutes = require("./routes/booking");
-
+const adminReviewsRoutes = require("./routes/adminReviews");
 
 
 app.use("/", publicRoutes);
@@ -62,7 +63,7 @@ app.use("/admin", adminRoutes);
 app.use("/admin/cars", carRoutes);
 app.use("/admin/bookings", adminBookingRoutes);
 app.use("/booking", bookingRoutes);
-
+app.use("/admin/reviews", adminReviewsRoutes);
 // =========================
 // Server
 // =========================

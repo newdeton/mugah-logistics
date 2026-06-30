@@ -101,7 +101,7 @@ if (existingBooking) {
     } catch (err) {
 
         console.error(err);
-        res.status(500).send("Booking failed.");
+        res.status(500).send("Booking failed. Ensure you Entered Your Full Name (3 names)");
 
     }
 
@@ -212,6 +212,97 @@ exports.completeBooking = async (req, res) => {
     } catch (err) {
 
         console.error(err);
+        res.status(500).send("Server Error");
+
+    }
+
+};
+
+// ==========================
+// GENERAL BOOKING PAGE
+// ==========================
+exports.generalBookingPage = async (req, res) => {
+
+    res.render("user/book-now", {
+        error: null
+    });
+
+};
+
+// ==========================
+// SAVE GENERAL BOOKING
+// ==========================
+exports.storeGeneralBooking = async (req, res) => {
+
+    try {
+
+        await Booking.create({
+
+            // No fleet vehicle selected
+            car: null,
+
+            fullName: req.body.fullName,
+
+            phone: req.body.phone,
+
+            email: req.body.email,
+
+            requestedCategory: req.body.requestedCategory,
+
+            requestedBrand: req.body.requestedBrand,
+
+            requestedModel: req.body.requestedModel,
+
+            requestedTransmission: req.body.requestedTransmission,
+
+            requestedSeats: req.body.requestedSeats,
+
+            pickupLocation: req.body.pickupLocation,
+
+            pickupDate: req.body.pickupDate,
+
+            returnDate: req.body.returnDate,
+
+            driverRequired: req.body.driverRequired === "Yes",
+
+            notes: req.body.notes
+
+        });
+
+        res.render("user/booking-success", {
+
+            car: null,
+
+            totalAmount: 0
+
+        });
+
+    } catch (err) {
+
+        console.error(err);
+
+        res.render("user/book-now", {
+
+            error: "Booking request failed. Please try again."
+
+        });
+
+    }
+
+};
+
+exports.deleteBooking = async (req, res) => {
+
+    try {
+
+        await Booking.findByIdAndDelete(req.params.id);
+
+        res.redirect("/admin/bookings");
+
+    } catch (err) {
+
+        console.error(err);
+
         res.status(500).send("Server Error");
 
     }

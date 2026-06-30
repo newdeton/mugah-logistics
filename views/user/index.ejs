@@ -15,9 +15,7 @@
         </p>
 
         <div class="hero-buttons">
-            <a href="/booking" class="btn">
-    Book Now
-</a>
+            <a href="/booking/book-now" class="book-btn">Book Now</a>
             <a href="#fleet" class="btn-outline">View Fleet</a>
         </div>
 
@@ -218,34 +216,45 @@
 
     <div class="testimonial-grid">
 
-        <div class="testimonial-card">
-            <p>
-                "Excellent customer service and very clean vehicles.
-                I highly recommend MUGAH LOGISTICS."
-            </p>
+<% if(reviews.length > 0){ %>
 
-            <h4>— James Mwangi</h4>
-        </div>
+    <% reviews.forEach(review => { %>
 
         <div class="testimonial-card">
+
+            <div class="stars">
+
+                <% for(let i = 0; i < review.rating; i++){ %>
+                    ⭐
+                <% } %>
+
+            </div>
+
             <p>
-                "Booking was quick and the airport pickup was on time.
-                Outstanding experience."
+
+                "<%= review.message %>"
+
             </p>
 
-            <h4>— Faith Wanjiku</h4>
+            <h4>
+
+                — <%= review.fullName %>
+
+            </h4>
+
         </div>
 
-        <div class="testimonial-card">
-            <p>
-                "Affordable prices and professional drivers.
-                Definitely using them again."
-            </p>
+    <% }) %>
 
-            <h4>— Brian Otieno</h4>
-        </div>
+<% } else { %>
 
-    </div>
+    <p style="text-align:center;">
+        No customer reviews yet.
+    </p>
+
+<% } %>
+
+</div>
 
 </section>
 
@@ -259,9 +268,7 @@
         Premium vehicles, competitive prices and exceptional customer service.
     </p>
 
-    <a href="/booking" class="btn">
-        Book Your Vehicle
-    </a>
+    <a href="/booking/book-now" class="book-btn">Book Your Vehicle</a>
 
 </section>
 

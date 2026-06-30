@@ -13,4 +13,7 @@ router.post("/login", adminController.login);
 // Dashboard
 router.get("/dashboard", auth, adminController.dashboard);
 
+// Logout
+router.get("/logout", adminController.logout);
+
 module.exports = router;

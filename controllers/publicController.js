@@ -1,5 +1,6 @@
 const Car = require("../models/Car");
 const Booking = require("../models/Booking");
+const Review = require("../models/Review");
 
 // ==========================
 // Home Page
@@ -18,13 +19,18 @@ exports.home = async (req, res) => {
         });
 
         const totalBookings = await Booking.countDocuments();
+        
+        const reviews = await Review.find({ approved: true })
+    .sort({ createdAt: -1 })
+    .limit(6);
 
         res.render("user/index", {
-            cars,
-            totalCars,
-            availableCars,
-            totalBookings
-        });
+    cars,
+    totalCars,
+    availableCars,
+    totalBookings,
+    reviews
+});
 
     } catch (err) {
 

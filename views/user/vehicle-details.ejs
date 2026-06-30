@@ -6,9 +6,32 @@
 
         <div class="vehicle-image">
 
-            <img
-                src="<%= (car.images && car.images.length > 0) ? car.images[0] : '/images/no-car.jpg' %>"
-                alt="<%= car.name %>">
+            <div class="main-image">
+
+    <img
+        id="mainCarImage"
+        src="<%= (car.images && car.images.length > 0) ? car.images[0] : '/images/no-car.jpg' %>"
+        alt="<%= car.name %>">
+
+</div>
+
+<% if(car.images && car.images.length > 1){ %>
+
+<div class="thumbnail-gallery">
+
+    <% car.images.forEach(image => { %>
+
+        <img
+            src="<%= image %>"
+            class="thumb"
+            onclick="changeImage(this.src)"
+            alt="<%= car.name %>">
+
+    <% }) %>
+
+</div>
+
+<% } %>
 
         </div>
 
@@ -115,8 +138,8 @@
             <div style="margin-top:30px;">
 
                 <a href="/booking/<%= car._id %>" class="btn">
-                    Book This Vehicle
-                </a>
+    Book This Vehicle
+</a>
 
             </div>
 
