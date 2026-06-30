@@ -1,0 +1,204 @@
+<%- include("../partials/header") %>
+<%- include("../partials/sidebar") %>
+<%- include("../partials/topbar") %>
+
+<div class="container-fluid">
+
+    <div class="card shadow p-4">
+
+        <h3 class="mb-4">Edit Vehicle</h3>
+
+        <form action="/admin/cars/edit/<%= car._id %>" method="POST" enctype="multipart/form-data">
+
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+                    <label>Vehicle Name</label>
+                    <input
+                        type="text"
+                        name="name"
+                        class="form-control"
+                        value="<%= car.name %>"
+                        required>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label>Brand</label>
+                    <input
+                        type="text"
+                        name="brand"
+                        class="form-control"
+                        value="<%= car.brand %>"
+                        required>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <label>Category</label>
+
+                    <select name="category" class="form-control">
+
+                        <option value="Sedan" <%= car.category==="Sedan" ? "selected" : "" %>>Sedan</option>
+                        <option value="SUV" <%= car.category==="SUV" ? "selected" : "" %>>SUV</option>
+                        <option value="Van" <%= car.category==="Van" ? "selected" : "" %>>Van</option>
+                        <option value="Pickup" <%= car.category==="Pickup" ? "selected" : "" %>>Pickup</option>
+                        <option value="Luxury" <%= car.category==="Luxury" ? "selected" : "" %>>Luxury</option>
+                        <option value="Bus" <%= car.category==="Bus" ? "selected" : "" %>>Bus</option>
+
+                    </select>
+
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <label>Year</label>
+                    <input
+                        type="number"
+                        name="year"
+                        class="form-control"
+                        value="<%= car.year %>">
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <label>Registration Number</label>
+                    <input
+                        type="text"
+                        name="registrationNumber"
+                        class="form-control"
+                        value="<%= car.registrationNumber %>">
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <label>Daily Rate</label>
+                    <input
+                        type="number"
+                        name="dailyRate"
+                        class="form-control"
+                        value="<%= car.dailyRate %>">
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <label>Weekly Rate</label>
+                    <input
+                        type="number"
+                        name="weeklyRate"
+                        class="form-control"
+                        value="<%= car.weeklyRate %>">
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <label>Monthly Rate</label>
+                    <input
+                        type="number"
+                        name="monthlyRate"
+                        class="form-control"
+                        value="<%= car.monthlyRate %>">
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <label>Seats</label>
+                    <input
+                        type="number"
+                        name="seats"
+                        class="form-control"
+                        value="<%= car.seats %>">
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <label>Transmission</label>
+
+                    <select name="transmission" class="form-control">
+
+                        <option value="Automatic" <%= car.transmission==="Automatic" ? "selected" : "" %>>Automatic</option>
+                        <option value="Manual" <%= car.transmission==="Manual" ? "selected" : "" %>>Manual</option>
+
+                    </select>
+
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <label>Fuel Type</label>
+
+                    <select name="fuelType" class="form-control">
+
+                        <option value="Petrol" <%= car.fuelType==="Petrol" ? "selected" : "" %>>Petrol</option>
+                        <option value="Diesel" <%= car.fuelType==="Diesel" ? "selected" : "" %>>Diesel</option>
+                        <option value="Hybrid" <%= car.fuelType==="Hybrid" ? "selected" : "" %>>Hybrid</option>
+                        <option value="Electric" <%= car.fuelType==="Electric" ? "selected" : "" %>>Electric</option>
+
+                    </select>
+
+                </div>
+
+                <div class="col-12 mb-3">
+                    <label>Description</label>
+
+                    <textarea
+                        name="description"
+                        class="form-control"
+                        rows="5"><%= car.description %></textarea>
+                </div>
+
+                <div class="col-12 mb-3">
+                    <label>Features</label>
+
+                    <input
+                        type="text"
+                        name="features"
+                        class="form-control"
+                        value="<%= car.features.join(', ') %>">
+                </div>
+
+                <div class="col-12 mb-3">
+
+                    <label>Current Images</label>
+
+                    <div class="row">
+
+                        <% if(car.images.length){ %>
+
+                            <% car.images.forEach(image=>{ %>
+
+                                <div class="col-md-3 mb-3">
+
+                                    <img
+                                        src="<%= image %>"
+                                        class="img-fluid rounded shadow">
+
+                                </div>
+
+                            <% }) %>
+
+                        <% } else { %>
+
+                            <p>No images uploaded.</p>
+
+                        <% } %>
+
+                    </div>
+
+                </div>
+
+                <div class="col-12 mb-4">
+
+                    <label>Replace Images (Optional)</label>
+
+                    <input
+                        type="file"
+                        name="images"
+                        class="form-control"
+                        multiple>
+
+                </div>
+
+            </div>
+
+            <button class="btn btn-warning">
+                Update Vehicle
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<%- include("../partials/footer") %>

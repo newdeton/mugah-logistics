@@ -15,7 +15,9 @@
         </p>
 
         <div class="hero-buttons">
-            <a href="/booking" class="btn">Book Now</a>
+            <a href="/booking" class="btn">
+    Book Now
+</a>
             <a href="#fleet" class="btn-outline">View Fleet</a>
         </div>
 
@@ -35,13 +37,19 @@
 
         <input type="date" required>
 
-        <select>
-            <option>Select Vehicle</option>
-            <option>Sedan</option>
-            <option>SUV</option>
-            <option>Luxury</option>
-            <option>Van</option>
-        </select>
+        <select name="car">
+
+    <option value="">Select Vehicle</option>
+
+    <% cars.forEach(car => { %>
+
+        <option value="<%= car._id %>">
+            <%= car.name %> - KSh <%= car.dailyRate.toLocaleString() %>/Day
+        </option>
+
+    <% }) %>
+
+</select>
 
         <select>
             <option>Driver Needed?</option>
@@ -68,128 +76,55 @@
 
     <div class="fleet-grid">
 
-        <div class="car-card">
+        <% if (cars && cars.length > 0) { %>
 
-            <img src="/images/premio.jpg" alt="Toyota Premio">
+            <% cars.forEach(car => { %>
 
-            <div class="car-info">
-                <h3>Toyota Premio</h3>
+                <div class="car-card">
 
-                <p>KSh 3,500 / Day</p>
+                    <a href="/booking/<%= car._id %>">
 
-                <div class="features">
-                    <span>👥 5 Seats</span>
-                    <span>⚙ Automatic</span>
-                    <span>⛽ Petrol</span>
+                        <img
+                            src="<%= (car.images && car.images.length > 0) ? car.images[0] : '/images/no-car.jpg' %>"
+                            alt="<%= car.name %>">
+
+                    </a>
+
+                    <div class="car-info">
+
+                        <h3><%= car.name %></h3>
+
+                        <p>KSh <%= car.dailyRate.toLocaleString() %> / Day</p>
+
+                        <div class="features">
+
+                            <span>👥 <%= car.seats %> Seats</span>
+
+                            <span>⚙ <%= car.transmission %></span>
+
+                            <span>⛽ <%= car.fuelType %></span>
+
+                        </div>
+
+                        <a href="/booking/<%= car._id %>" class="btn">
+                            Book Now
+                        </a>
+
+                    </div>
+
                 </div>
 
-                <a href="/booking" class="btn">Book Now</a>
+            <% }) %>
+
+        <% } else { %>
+
+            <div style="width:100%;text-align:center;padding:40px;">
+
+                <h3>No vehicles available at the moment.</h3>
 
             </div>
 
-        </div>
-
-        <div class="car-card">
-
-            <img src="/images/prado.jpg" alt="Toyota Prado">
-
-            <div class="car-info">
-                <h3>Toyota Prado TX</h3>
-
-                <p>KSh 12,000 / Day</p>
-
-                <div class="features">
-                    <span>👥 7 Seats</span>
-                    <span>⚙ Automatic</span>
-                    <span>⛽ Diesel</span>
-                </div>
-
-                <a href="/booking" class="btn">Book Now</a>
-
-            </div>
-
-        </div>
-
-        <div class="car-card">
-
-            <img src="/images/demio.jpg" alt="Mazda Demio">
-
-            <div class="car-info">
-                <h3>Mazda Demio</h3>
-
-                <p>KSh 2,800 / Day</p>
-
-                <div class="features">
-                    <span>👥 5 Seats</span>
-                    <span>⚙ Automatic</span>
-                    <span>⛽ Petrol</span>
-                </div>
-
-                <a href="/booking" class="btn">Book Now</a>
-
-            </div>
-
-        </div>
-
-        <div class="car-card">
-
-            <img src="/images/noah.jpg" alt="Toyota Noah">
-
-            <div class="car-info">
-                <h3>Toyota Noah</h3>
-
-                <p>KSh 6,500 / Day</p>
-
-                <div class="features">
-                    <span>👥 8 Seats</span>
-                    <span>⚙ Automatic</span>
-                    <span>⛽ Petrol</span>
-                </div>
-
-                <a href="/booking" class="btn">Book Now</a>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- WHY CHOOSE US -->
-
-<section class="why-us">
-
-    <div class="section-title">
-        <h2>Why Choose MUGAH LOGISTICS?</h2>
-        <p>Your trusted partner for reliable and comfortable transportation.</p>
-    </div>
-
-    <div class="why-grid">
-
-        <div class="why-card">
-            <i class="fas fa-car-side"></i>
-            <h3>Modern Fleet</h3>
-            <p>Clean, well-maintained and fully insured vehicles for every journey.</p>
-        </div>
-
-        <div class="why-card">
-            <i class="fas fa-clock"></i>
-            <h3>24/7 Support</h3>
-            <p>Our team is available around the clock to assist you whenever you need us.</p>
-        </div>
-
-        <div class="why-card">
-            <i class="fas fa-money-bill-wave"></i>
-            <h3>Affordable Rates</h3>
-            <p>Competitive pricing with no hidden charges.</p>
-        </div>
-
-        <div class="why-card">
-            <i class="fas fa-map-marker-alt"></i>
-            <h3>Nationwide Service</h3>
-            <p>Convenient pickup and drop-off services across Kenya.</p>
-        </div>
+        <% } %>
 
     </div>
 

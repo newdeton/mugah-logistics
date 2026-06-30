@@ -23,4 +23,15 @@ router.post(
 
 router.post("/delete/:id", auth, carController.deleteCar);
 
+// Show Edit Vehicle Form
+router.get("/edit/:id", auth, carController.editPage);
+
+// Update Vehicle
+router.post(
+    "/edit/:id",
+    auth,
+    upload.array("images", 6),
+    carController.update
+);
+
 module.exports = router;

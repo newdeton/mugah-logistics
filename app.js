@@ -11,16 +11,21 @@ const connectDB = require("./config/db");
 
 const app = express();
 
+// Connect Database
 connectDB();
 
+// =========================
 // Middleware
+// =========================
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(methodOverride("_method"));
 
 app.use(express.static(path.join(__dirname, "public")));
 
-// Session
+// =========================
+// Sessions
+// =========================
 app.use(
     session({
         secret: process.env.SESSION_SECRET,
@@ -35,22 +40,32 @@ app.use(
     })
 );
 
+// =========================
 // View Engine
+// =========================
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
+// =========================
 // Routes
+// =========================
+const publicRoutes = require("./routes/public");
 const adminRoutes = require("./routes/admin");
 const carRoutes = require("./routes/cars");
+const adminBookingRoutes = require("./routes/adminBookings");
+const bookingRoutes = require("./routes/booking");
 
-app.use("/admin/cars", carRoutes);
+
+
+app.use("/", publicRoutes);
 app.use("/admin", adminRoutes);
+app.use("/admin/cars", carRoutes);
+app.use("/admin/bookings", adminBookingRoutes);
+app.use("/booking", bookingRoutes);
 
-app.get("/", (req, res) => {
-    res.render("user/index");
-});
-
+// =========================
 // Server
+// =========================
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {

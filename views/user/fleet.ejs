@@ -1,0 +1,220 @@
+<%- include("../partials/header") %>
+
+<!-- Fleet Hero -->
+<section class="fleet-hero">
+
+    <div class="fleet-overlay"></div>
+
+    <div class="fleet-hero-content">
+
+        <h1>Our Premium Fleet</h1>
+
+        <p>
+            Browse our collection of reliable, comfortable and professionally
+            maintained vehicles for every journey.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- Fleet Filters -->
+<section class="fleet-filters">
+
+    <form method="GET" action="/fleet">
+
+        <input
+    type="text"
+    name="search"
+    value="<%= search || '' %>"
+    placeholder="Search vehicle...">
+
+        <select name="category">
+
+    <option value="">All Categories</option>
+
+    <option value="Sedan" <%= category==="Sedan"?"selected":"" %>>Sedan</option>
+
+    <option value="SUV" <%= category==="SUV"?"selected":"" %>>SUV</option>
+
+    <option value="Van" <%= category==="Van"?"selected":"" %>>Van</option>
+
+    <option value="Pickup" <%= category==="Pickup"?"selected":"" %>>Pickup</option>
+
+    <option value="Luxury" <%= category==="Luxury"?"selected":"" %>>Luxury</option>
+
+    <option value="Bus" <%= category==="Bus"?"selected":"" %>>Bus</option>
+
+</select>
+
+        <select name="transmission">
+
+    <option value="">Transmission</option>
+
+    <option value="Automatic" <%= transmission==="Automatic"?"selected":"" %>>
+        Automatic
+    </option>
+
+    <option value="Manual" <%= transmission==="Manual"?"selected":"" %>>
+        Manual
+    </option>
+
+</select>
+
+        <button class="btn">
+            Search
+        </button>
+
+    </form>
+
+</section>
+
+<section class="fleet-search">
+
+<form method="GET" action="/fleet">
+
+    <select name="category">
+
+        <option value="">All Categories</option>
+
+        <option value="Sedan">Sedan</option>
+
+        <option value="SUV">SUV</option>
+
+        <option value="Van">Van</option>
+
+        <option value="Pickup">Pickup</option>
+
+        <option value="Luxury">Luxury</option>
+
+        <option value="Bus">Bus</option>
+
+    </select>
+
+    <input
+        type="text"
+        name="brand"
+        placeholder="Brand"
+        value="<%= filters.brand || '' %>">
+
+    <select name="transmission">
+
+        <option value="">Transmission</option>
+
+        <option value="Automatic">Automatic</option>
+
+        <option value="Manual">Manual</option>
+
+    </select>
+
+    <input
+        type="number"
+        name="minPrice"
+        placeholder="Min Price"
+        value="<%= filters.minPrice || '' %>">
+
+    <input
+        type="number"
+        name="maxPrice"
+        placeholder="Max Price"
+        value="<%= filters.maxPrice || '' %>">
+
+    <label>
+
+        <input
+            type="checkbox"
+            name="available"
+            value="true"
+            <%= filters.available ? "checked" : "" %>>
+
+        Available Only
+
+    </label>
+
+    <button class="btn">
+
+        Search
+
+    </button>
+
+</form>
+
+</section>
+
+<!-- Fleet Vehicles -->
+
+<section class="fleet-list">
+
+    <div class="fleet-grid">
+
+        <% if (cars.length > 0) { %>
+
+            <% cars.forEach(car => { %>
+
+                <div class="car-card">
+
+                    <img
+                        src="<%= car.images.length ? car.images[0] : '/images/no-car.jpg' %>"
+                        alt="<%= car.name %>">
+
+                    <div class="car-info">
+
+                        <h3><%= car.name %></h3>
+
+                        <p class="price">
+                            KSh <%= car.dailyRate.toLocaleString() %> / Day
+                        </p>
+
+                        <div class="features">
+
+                            <span>👥 <%= car.seats %> Seats</span>
+
+                            <span>⚙ <%= car.transmission %></span>
+
+                            <span>⛽ <%= car.fuelType %></span>
+
+                        </div>
+
+                        <% if(car.available){ %>
+
+                            <span class="badge available">
+                                Available
+                            </span>
+
+                        <% } else { %>
+
+                            <span class="badge booked">
+                                Booked
+                            </span>
+
+                        <% } %>
+
+                        <div class="card-buttons">
+
+                            <a href="#" class="btn-outline">
+                                View Details
+                            </a>
+
+                            <a href="/booking/<%= car._id %>" class="btn">
+                                Book Now
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            <% }) %>
+
+        <% } else { %>
+
+            <h2>No vehicles available.</h2>
+
+        <% } %>
+
+    </div>
+
+</section>
+
+<%- include("../partials/footer") %>

@@ -1,0 +1,91 @@
+<%- include("../partials/header") %>
+
+<section class="page-header">
+
+    <div class="page-content">
+
+        <h1>Vehicle Pricing</h1>
+
+        <p>
+
+            Transparent pricing with no hidden charges.
+
+        </p>
+
+    </div>
+
+</section>
+
+<section class="pricing-section">
+
+    <% if(cars.length > 0){ %>
+
+        <div class="pricing-grid">
+
+            <% cars.forEach(car=>{ %>
+
+                <div class="pricing-card">
+
+                    <img
+                        src="<%= car.images.length ? car.images[0] : '/images/no-car.jpg' %>"
+                        alt="<%= car.name %>">
+
+                    <h2><%= car.name %></h2>
+
+                    <p><%= car.category %></p>
+
+                    <h3>
+
+                        KSh <%= car.dailyRate.toLocaleString() %>
+
+                        <small>/ Day</small>
+
+                    </h3>
+
+                    <% if(car.weeklyRate){ %>
+
+                        <p>
+
+                            Weekly:
+                            KSh <%= car.weeklyRate.toLocaleString() %>
+
+                        </p>
+
+                    <% } %>
+
+                    <% if(car.monthlyRate){ %>
+
+                        <p>
+
+                            Monthly:
+                            KSh <%= car.monthlyRate.toLocaleString() %>
+
+                        </p>
+
+                    <% } %>
+
+                    <a
+                        href="/fleet/<%= car._id %>"
+                        class="btn">
+
+                        View Vehicle
+
+                    </a>
+
+                </div>
+
+            <% }) %>
+
+        </div>
+
+    <% } else { %>
+
+        <h2 style="text-align:center;">
+            No pricing available.
+        </h2>
+
+    <% } %>
+
+</section>
+
+<%- include("../partials/footer") %>

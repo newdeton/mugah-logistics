@@ -1,0 +1,232 @@
+<%- include("partials/header") %>
+
+<%- include("partials/sidebar") %>
+
+<div class="main-content">
+
+<%- include("partials/topbar") %>
+
+<div class="container-fluid">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <h2>Booking Management</h2>
+
+        <a href="/" class="btn btn-primary">
+            View Website
+        </a>
+
+    </div>
+
+    <div class="card shadow border-0">
+
+        <div class="card-body">
+
+            <div class="table-responsive">
+
+                <table class="table table-hover align-middle">
+
+                    <thead class="table-dark">
+
+                        <tr>
+
+                            <th>Customer</th>
+
+                            <th>Vehicle</th>
+
+                            <th>Pickup</th>
+
+                            <th>Return</th>
+
+                            <th>Amount</th>
+
+                            <th>Status</th>
+
+                            <th>Actions</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                    <% if(bookings.length > 0){ %>
+
+                        <% bookings.forEach(booking=>{ %>
+
+                        <tr>
+
+                            <td>
+
+                                <strong><%= booking.fullName %></strong>
+
+                                <br>
+
+                                <small><%= booking.phone %></small>
+
+                                <br>
+
+                                <small><%= booking.email %></small>
+
+                            </td>
+
+                            <td>
+
+                                <% if(booking.car){ %>
+
+                                    <%= booking.car.name %>
+
+                                <% }else{ %>
+
+                                    Vehicle Deleted
+
+                                <% } %>
+
+                            </td>
+
+                            <td>
+
+                                <%= new Date(booking.pickupDate).toLocaleDateString() %>
+
+                            </td>
+
+                            <td>
+
+                                <%= new Date(booking.returnDate).toLocaleDateString() %>
+
+                            </td>
+
+                            <td>
+
+                                <%= booking.totalAmount ? "KSh " + booking.totalAmount.toLocaleString() : "N/A" %>
+
+                            </td>
+
+                            <td>
+
+                                <% if(booking.status==="Pending"){ %>
+
+                                    <span class="badge bg-warning text-dark">
+
+                                        Pending
+
+                                    </span>
+
+                                <% } %>
+
+                                <% if(booking.status==="Approved"){ %>
+
+                                    <span class="badge bg-success">
+
+                                        Approved
+
+                                    </span>
+
+                                <% } %>
+
+                                <% if(booking.status==="Rejected"){ %>
+
+                                    <span class="badge bg-danger">
+
+                                        Rejected
+
+                                    </span>
+
+                                <% } %>
+
+                                <% if(booking.status==="Completed"){ %>
+
+                                    <span class="badge bg-primary">
+
+                                        Completed
+
+                                    </span>
+
+                                <% } %>
+
+                            </td>
+
+                            <td>
+
+                                <% if(booking.status==="Pending"){ %>
+
+                                    <form
+                                    action="/admin/bookings/approve/<%= booking._id %>"
+                                    method="POST"
+                                    style="display:inline;">
+
+                                        <button class="btn btn-success btn-sm">
+
+                                            Approve
+
+                                        </button>
+
+                                    </form>
+
+                                    <form
+                                    action="/admin/bookings/reject/<%= booking._id %>"
+                                    method="POST"
+                                    style="display:inline;">
+
+                                        <button class="btn btn-danger btn-sm">
+
+                                            Reject
+
+                                        </button>
+
+                                    </form>
+
+                                <% } %>
+
+                                <% if(booking.status==="Approved"){ %>
+
+                                    <form
+                                    action="/admin/bookings/complete/<%= booking._id %>"
+                                    method="POST"
+                                    style="display:inline;">
+
+                                        <button class="btn btn-primary btn-sm">
+
+                                            Complete
+
+                                        </button>
+
+                                    </form>
+
+                                <% } %>
+
+                            </td>
+
+                        </tr>
+
+                        <% }) %>
+
+                    <% }else{ %>
+
+                        <tr>
+
+                            <td colspan="7" class="text-center">
+
+                                No bookings available.
+
+                            </td>
+
+                        </tr>
+
+                    <% } %>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+<%- include("partials/footer") %>

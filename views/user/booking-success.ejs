@@ -1,0 +1,51 @@
+<%- include("../partials/header") %>
+
+<section class="booking-success">
+
+    <div class="success-card">
+
+        <i class="fas fa-circle-check success-icon"></i>
+
+        <h1>Booking Submitted Successfully!</h1>
+
+        <p>
+            Thank you for choosing <strong>MUGAH LOGISTICS</strong>.
+            Your booking request has been received and is awaiting confirmation.
+        </p>
+
+        <div class="booking-summary">
+
+            <h3>Booking Summary</h3>
+
+            <p><strong>Vehicle:</strong> <%= car.name %></p>
+
+            <p><strong>Brand:</strong> <%= car.brand %></p>
+
+            <p>
+                <strong>Estimated Total:</strong>
+                KSh <%= totalAmount.toLocaleString() %>
+            </p>
+
+        </div>
+
+        <p>
+            Our team will contact you shortly to confirm your booking and payment details.
+        </p>
+
+        <div class="success-buttons">
+
+            <a href="/" class="btn">
+                Back Home
+            </a>
+
+            <a href="/fleet" class="btn-outline">
+                Browse More Vehicles
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<%- include("../partials/footer") %>

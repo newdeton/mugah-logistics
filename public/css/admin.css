@@ -75,3 +75,193 @@ body{
 .btn-login:hover{
     background:#d97706;
 }
+
+/* ==========================
+   BOOKINGS TABLE
+========================== */
+
+.admin-table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    background:#fff;
+
+    margin-top:30px;
+
+    border-radius:10px;
+
+    overflow:hidden;
+
+}
+
+.admin-table th{
+
+    background:#111;
+
+    color:#fff;
+
+    padding:15px;
+
+}
+
+.admin-table td{
+
+    padding:15px;
+
+    border-bottom:1px solid #eee;
+
+}
+
+.status{
+
+    color:#fff;
+
+    padding:6px 14px;
+
+    border-radius:20px;
+
+    font-size:14px;
+
+}
+
+.status.pending{
+
+    background:#f39c12;
+
+}
+
+.status.approved{
+
+    background:#27ae60;
+
+}
+
+.status.rejected{
+
+    background:#e74c3c;
+
+}
+
+.status.completed{
+
+    background:#3498db;
+
+}
+
+.approve-btn,
+.reject-btn,
+.complete-btn{
+
+    border:none;
+
+    color:#fff;
+
+    padding:8px 14px;
+
+    border-radius:5px;
+
+    cursor:pointer;
+
+    margin:2px;
+
+}
+
+.approve-btn{
+
+    background:#27ae60;
+
+}
+
+.reject-btn{
+
+    background:#e74c3c;
+
+}
+
+.complete-btn{
+
+    background:#3498db;
+
+}
+
+/* ==========================
+   DASHBOARD
+========================== */
+
+.dashboard-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+
+    gap:25px;
+
+}
+
+.dashboard-card{
+
+    background:#fff;
+
+    border-radius:15px;
+
+    padding:30px;
+
+    text-align:center;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+.dashboard-card:hover{
+
+    transform:translateY(-6px);
+
+}
+
+.dashboard-card i{
+
+    font-size:45px;
+
+    color:#d4af37;
+
+    margin-bottom:20px;
+
+}
+
+.dashboard-card h2{
+
+    font-size:32px;
+
+    margin-bottom:10px;
+
+}
+
+.dashboard-card p{
+
+    color:#777;
+
+}
+
+.revenue{
+
+    background:#111;
+
+    color:#fff;
+
+}
+
+.revenue p{
+
+    color:#ddd;
+
+}
+
+.revenue i{
+
+    color:#d4af37;
+
+}

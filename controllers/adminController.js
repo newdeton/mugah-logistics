@@ -45,29 +45,68 @@ exports.dashboard = async (req, res) => {
 
         const totalCars = await Car.countDocuments();
 
+        const availableCars = await Car.countDocuments({
+            available: true
+        });
+
+        const bookedCars = await Car.countDocuments({
+            available: false
+        });
+
         const totalBookings = await Booking.countDocuments();
 
-        const totalReviews = await Review.countDocuments();
+        const pendingBookings = await Booking.countDocuments({
+            status: "Pending"
+        });
 
-        const totalCustomers = await Booking.distinct("email");
+        const approvedBookings = await Booking.countDocuments({
+            status: "Approved"
+        });
+
+        const revenue = await Booking.aggregate([
+            {
+                $match: {
+                    status: {
+                        $in: ["Approved", "Completed"]
+                    }
+                }
+            },
+            {
+                $group: {
+                    _id: null,
+                    total: {
+                        $sum: "$totalAmount"
+                    }
+                }
+            }
+        ]);
 
         res.render("admin/dashboard", {
 
             totalCars,
 
+            availableCars,
+
+            bookedCars,
+
             totalBookings,
 
-            totalReviews,
+            pendingBookings,
 
-            totalCustomers: totalCustomers.length
+            approvedBookings,
+
+            revenue:
+                revenue.length > 0
+                    ? revenue[0].total
+                    : 0
 
         });
 
     } catch (err) {
 
-        console.log(err);
+        console.error(err);
 
-        res.send("Dashboard Error");
+        res.status(500).send("Server Error");
 
     }
 

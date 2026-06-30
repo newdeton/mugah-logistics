@@ -1,0 +1,195 @@
+<%- include("../partials/header") %>
+
+<section class="vehicle-details">
+
+    <div class="vehicle-container">
+
+        <div class="vehicle-image">
+
+            <img
+                src="<%= (car.images && car.images.length > 0) ? car.images[0] : '/images/no-car.jpg' %>"
+                alt="<%= car.name %>">
+
+        </div>
+
+        <div class="vehicle-info">
+
+            <h1><%= car.name %></h1>
+
+            <h3><%= car.brand %></h3>
+
+            <% if(car.available){ %>
+
+                <span class="badge available">
+                    Available
+                </span>
+
+            <% } else { %>
+
+                <span class="badge booked">
+                    Booked
+                </span>
+
+            <% } %>
+
+            <div class="price-box">
+
+                <h2>
+                    KSh <%= car.dailyRate.toLocaleString() %>
+                    <small>/ Day</small>
+                </h2>
+
+                <% if(car.weeklyRate){ %>
+                    <p>Weekly: KSh <%= car.weeklyRate.toLocaleString() %></p>
+                <% } %>
+
+                <% if(car.monthlyRate){ %>
+                    <p>Monthly: KSh <%= car.monthlyRate.toLocaleString() %></p>
+                <% } %>
+
+            </div>
+
+            <table class="vehicle-specs">
+
+                <tr>
+                    <td>Category</td>
+                    <td><%= car.category %></td>
+                </tr>
+
+                <tr>
+                    <td>Seats</td>
+                    <td><%= car.seats %></td>
+                </tr>
+
+                <tr>
+                    <td>Transmission</td>
+                    <td><%= car.transmission %></td>
+                </tr>
+
+                <tr>
+                    <td>Fuel</td>
+                    <td><%= car.fuelType %></td>
+                </tr>
+
+                <tr>
+                    <td>Year</td>
+                    <td><%= car.year %></td>
+                </tr>
+
+                <tr>
+                    <td>Color</td>
+                    <td><%= car.color %></td>
+                </tr>
+
+                <tr>
+                    <td>Registration</td>
+                    <td><%= car.registrationNumber %></td>
+                </tr>
+
+            </table>
+
+            <% if(car.description){ %>
+
+                <h3>Description</h3>
+
+                <p><%= car.description %></p>
+
+            <% } %>
+
+            <% if(car.features && car.features.length > 0){ %>
+
+                <h3>Features</h3>
+
+                <ul>
+
+                    <% car.features.forEach(feature => { %>
+
+                        <li>✔ <%= feature %></li>
+
+                    <% }) %>
+
+                </ul>
+
+            <% } %>
+
+            <div style="margin-top:30px;">
+
+                <a href="/booking/<%= car._id %>" class="btn">
+                    Book This Vehicle
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- RELATED VEHICLES -->
+
+<% if (relatedCars && relatedCars.length > 0) { %>
+
+<section class="fleet">
+
+    <div class="section-title">
+
+        <h2>Similar Vehicles</h2>
+
+        <p>You may also like these vehicles.</p>
+
+    </div>
+
+    <div class="fleet-grid">
+
+        <% relatedCars.forEach(vehicle => { %>
+
+        <div class="car-card">
+
+            <a href="/fleet/<%= vehicle._id %>">
+
+                <img
+                    src="<%= (vehicle.images && vehicle.images.length) ? vehicle.images[0] : '/images/no-car.jpg' %>"
+                    alt="<%= vehicle.name %>">
+
+            </a>
+
+            <div class="car-info">
+
+                <h3><%= vehicle.name %></h3>
+
+                <p>
+
+                    KSh <%= vehicle.dailyRate.toLocaleString() %> / Day
+
+                </p>
+
+                <div class="features">
+
+                    <span>👥 <%= vehicle.seats %> Seats</span>
+
+                    <span>⚙ <%= vehicle.transmission %></span>
+
+                    <span>⛽ <%= vehicle.fuelType %></span>
+
+                </div>
+
+                <a href="/fleet/<%= vehicle._id %>" class="btn">
+
+                    View Details
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <% }) %>
+
+    </div>
+
+</section>
+
+<% } %>
+
+<%- include("../partials/footer") %>

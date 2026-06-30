@@ -2,77 +2,152 @@
 
 <%- include("partials/sidebar") %>
 
+<div class="main-content">
+
 <%- include("partials/topbar") %>
 
-<h2 class="mb-4">
+<div class="container-fluid">
 
-Welcome to MUGAH LOGISTICS
+    <h2 class="mb-4">
+        Welcome to MUGAH LOGISTICS
+    </h2>
 
-</h2>
+    <div class="row g-4">
 
-<div class="row">
+        <!-- Total Vehicles -->
+        <div class="col-lg-3 col-md-6">
 
-<div class="col-md-3">
+            <div class="card shadow border-0 h-100">
 
-<div class="card shadow">
+                <div class="card-body text-center">
 
-<div class="card-body">
+                    <i class="fas fa-car fa-3x text-warning mb-3"></i>
 
-<h5>Total Vehicles</h5>
+                    <h5>Total Vehicles</h5>
 
-<h2><%= totalCars %></h2>
+                    <h2><%= totalCars %></h2>
 
-</div>
+                </div>
 
-</div>
+            </div>
 
-</div>
+        </div>
 
-<div class="col-md-3">
+        <!-- Available Vehicles -->
+        <div class="col-lg-3 col-md-6">
 
-<div class="card shadow">
+            <div class="card shadow border-0 h-100">
 
-<div class="card-body">
+                <div class="card-body text-center">
 
-<h5>Total Bookings</h5>
+                    <i class="fas fa-check-circle fa-3x text-success mb-3"></i>
 
-<h2><%= totalBookings %></h2>
+                    <h5>Available Vehicles</h5>
 
-</div>
+                    <h2><%= availableCars %></h2>
 
-</div>
+                </div>
 
-</div>
+            </div>
 
-<div class="col-md-3">
+        </div>
 
-<div class="card shadow">
+        <!-- Rented Vehicles -->
+        <div class="col-lg-3 col-md-6">
 
-<div class="card-body">
+            <div class="card shadow border-0 h-100">
 
-<h5>Reviews</h5>
+                <div class="card-body text-center">
 
-<h2><%= totalReviews %></h2>
+                    <i class="fas fa-key fa-3x text-primary mb-3"></i>
 
-</div>
+                    <h5>Rented Vehicles</h5>
 
-</div>
+                    <h2><%= bookedCars %></h2>
 
-</div>
+                </div>
 
-<div class="col-md-3">
+            </div>
 
-<div class="card shadow">
+        </div>
 
-<div class="card-body">
+        <!-- Total Bookings -->
+        <div class="col-lg-3 col-md-6">
 
-<h5>Customers</h5>
+            <div class="card shadow border-0 h-100">
 
-<h2><%= totalCustomers %></h2>
+                <div class="card-body text-center">
 
-</div>
+                    <i class="fas fa-calendar-check fa-3x text-info mb-3"></i>
 
-</div>
+                    <h5>Total Bookings</h5>
+
+                    <h2><%= totalBookings %></h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Pending -->
+        <div class="col-lg-3 col-md-6">
+
+            <div class="card shadow border-0 h-100">
+
+                <div class="card-body text-center">
+
+                    <i class="fas fa-hourglass-half fa-3x text-warning mb-3"></i>
+
+                    <h5>Pending Bookings</h5>
+
+                    <h2><%= pendingBookings %></h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Approved -->
+        <div class="col-lg-3 col-md-6">
+
+            <div class="card shadow border-0 h-100">
+
+                <div class="card-body text-center">
+
+                    <i class="fas fa-thumbs-up fa-3x text-success mb-3"></i>
+
+                    <h5>Approved Bookings</h5>
+
+                    <h2><%= approvedBookings %></h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Revenue -->
+        <div class="col-lg-6">
+
+            <div class="card shadow border-0 h-100 bg-dark text-white">
+
+                <div class="card-body text-center">
+
+                    <i class="fas fa-coins fa-3x text-warning mb-3"></i>
+
+                    <h5>Total Revenue</h5>
+
+                    <h2>KSh <%= revenue.toLocaleString() %></h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </div>
 

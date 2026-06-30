@@ -1,0 +1,101 @@
+<%- include("../partials/header") %>
+
+<section class="container" style="padding:120px 8% 60px;">
+
+    <div class="booking-wrapper">
+
+        <div class="booking-car">
+
+            <img
+                src="<%= (car.images && car.images.length) ? car.images[0] : '/images/no-car.jpg' %>"
+                alt="<%= car.name %>"
+                style="width:100%;border-radius:12px;">
+
+            <h2 style="margin-top:20px;"><%= car.name %></h2>
+
+            <p><strong>Brand:</strong> <%= car.brand %></p>
+
+            <p><strong>Category:</strong> <%= car.category %></p>
+
+            <p><strong>Seats:</strong> <%= car.seats %></p>
+
+            <p><strong>Transmission:</strong> <%= car.transmission %></p>
+
+            <p><strong>Fuel:</strong> <%= car.fuelType %></p>
+
+            <h3 style="color:#d4af37;">
+                KSh <%= car.dailyRate.toLocaleString() %> / Day
+            </h3>
+
+        </div>
+
+        <div class="booking-form">
+
+            <h2>Book This Vehicle</h2>
+
+            <form action="/booking/<%= car._id %>" method="POST">
+
+                <input
+                    type="text"
+                    name="customerName"
+                    placeholder="Full Name"
+                    required>
+
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Email Address"
+                    required>
+
+                <input
+                    type="text"
+                    name="phone"
+                    placeholder="Phone Number"
+                    required>
+
+                <input
+                    type="text"
+                    name="pickupLocation"
+                    placeholder="Pickup Location"
+                    required>
+
+                <label>Pickup Date</label>
+
+                <input
+                    type="date"
+                    name="pickupDate"
+                    required>
+
+                <label>Return Date</label>
+
+                <input
+                    type="date"
+                    name="returnDate"
+                    required>
+
+                <select name="driverRequired">
+
+                    <option>No</option>
+
+                    <option>Yes</option>
+
+                </select>
+
+                <textarea
+                    name="specialRequests"
+                    rows="4"
+                    placeholder="Special Requests (Optional)"></textarea>
+
+                <button type="submit" class="btn">
+                    Confirm Booking
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+<%- include("../partials/footer") %>
