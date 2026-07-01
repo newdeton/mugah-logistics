@@ -38,7 +38,7 @@
 
                             <th>Return</th>
 
-                            <th>Amount</th>
+                            <th>Special Req</th>
 
                             <th>Status</th>
 
@@ -120,9 +120,19 @@
 
                             <td>
 
-                                <%= booking.totalAmount ? "KSh " + booking.totalAmount.toLocaleString() : "N/A" %>
+    <% if (booking.specialRequests) { %>
 
-                            </td>
+        <%= booking.specialRequests %>
+
+    <% } else { %>
+
+        <span class="text-muted">
+            None
+        </span>
+
+    <% } %>
+
+</td>
 
                             <td>
 
