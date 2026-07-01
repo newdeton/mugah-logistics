@@ -85,7 +85,7 @@ if (existingBooking) {
 
             returnDate: req.body.returnDate,
 
-            specialRequests: req.body.specialRequests,
+            specialRequests: req.body.notes,
 
             totalAmount
 
@@ -266,9 +266,7 @@ exports.storeGeneralBooking = async (req, res) => {
             driverRequired: req.body.driverRequired === "Yes",
 
             specialRequests: req.body.specialRequests,
-
-            notes: req.body.notes
-
+            
         });
 
         res.render("user/booking-success", {
