@@ -36,10 +36,8 @@ const bookingSchema = new mongoose.Schema({
 
     requestedTransmission: String,
 
-    requestedSeats: Number,
-
-    // Booking Details
-
+        // Booking Details
+    
     pickupLocation: {
         type: String,
         required: true
@@ -60,14 +58,12 @@ const bookingSchema = new mongoose.Schema({
         default: false
     },
 
-    notes: String,
-
-    totalAmount: {
-        type: Number,
-        default: 0
+    specialRequests: {
+        type: String,
+        default: ""
     },
 
-    status: {
+        status: {
         type: String,
         enum: [
             "Pending",
@@ -78,6 +74,7 @@ const bookingSchema = new mongoose.Schema({
         default: "Pending"
     }
 
+    
 },{
     timestamps:true
 });

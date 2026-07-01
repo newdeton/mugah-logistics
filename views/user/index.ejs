@@ -26,32 +26,63 @@
 
 <section class="quick-booking">
 
-    <form>
+    <form action="/fleet" method="GET">
 
-        <input type="text" placeholder="Pickup Location" required>
+        <input
+            type="text"
+            placeholder="Pickup Location"
+            required>
 
-        <input type="date" placeholder="Pickup Date"required>
+        <div class="date-group">
 
-        <input type="date" placeholder="Return Date"required>
+            <label for="pickupDate">
+                Pickup Date
+            </label>
+
+            <input
+                type="date"
+                id="pickupDate"
+                name="pickupDate"
+                required>
+
+        </div>
+
+        <div class="date-group">
+
+            <label for="returnDate">
+                Return Date
+            </label>
+
+            <input
+                type="date"
+                id="returnDate"
+                name="returnDate"
+                required>
+
+        </div>
 
         <select name="car">
 
-    <option value="">Select Vehicle</option>
+            <option value="">Select Vehicle</option>
 
-    <% cars.forEach(car => { %>
+            <% cars.forEach(car => { %>
 
-        <option value="<%= car._id %>">
-            <%= car.name %> - KSh <%= car.dailyRate.toLocaleString() %>/Day
-        </option>
+                <option value="<%= car._id %>">
+                    <%= car.name %> - KSh <%= car.dailyRate.toLocaleString() %>/Day
+                </option>
 
-    <% }) %>
+            <% }) %>
 
-</select>
+        </select>
 
-        <select>
-            <option>Driver Needed?</option>
+        <select name="driverRequired">
+
+            <option value="">Driver Needed?</option>
+
             <option>Yes</option>
+
             <option>No</option>
+
         </select>
 
         <button type="submit">
@@ -61,7 +92,6 @@
     </form>
 
 </section>
-
 <!-- FEATURED FLEET -->
 
 <section class="fleet" id="fleet">
