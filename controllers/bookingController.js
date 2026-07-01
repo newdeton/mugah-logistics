@@ -265,6 +265,8 @@ exports.storeGeneralBooking = async (req, res) => {
 
             driverRequired: req.body.driverRequired === "Yes",
 
+            specialRequests: req.body.specialRequests,
+
             notes: req.body.notes
 
         });

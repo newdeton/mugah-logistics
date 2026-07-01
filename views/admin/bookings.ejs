@@ -58,31 +58,53 @@
 
                             <td>
 
-                                <strong><%= booking.fullName %></strong>
+    <strong><%= booking.fullName %></strong>
 
-                                <br>
+    <br>
 
-                                <small><%= booking.phone %></small>
+    <small><%= booking.phone %></small>
 
-                                <br>
+    <br>
 
-                                <small><%= booking.email %></small>
+    <small><%= booking.email %></small>
 
-                            </td>
+    <% if (booking.specialRequests) { %>
+
+        <hr style="margin:8px 0;">
+
+        <small>
+
+            <strong>Special Requests:</strong><br>
+
+            <%= booking.specialRequests %>
+
+        </small>
+
+    <% } %>
+
+</td>
 
                             <td>
 
-                                <% if(booking.car){ %>
+    <% if (booking.car) { %>
 
-                                    <%= booking.car.name %>
+        <%= booking.car.name %>
 
-                                <% }else{ %>
+    <% } else if (!booking.car && !booking.totalAmount) { %>
 
-                                    Vehicle Deleted
+        <span class="badge bg-info">
+            Special Booking
+        </span>
 
-                                <% } %>
+    <% } else { %>
 
-                            </td>
+        <span class="badge bg-danger">
+            Vehicle Deleted
+        </span>
+
+    <% } %>
+
+</td>
 
                             <td>
 
