@@ -172,21 +172,27 @@
 
                                 <% if (booking.status === "Pending") { %>
 
-    <a href="/admin/bookings/approve/<%= booking._id %>" class="btn btn-success btn-sm">
+    <form action="/admin/bookings/approve/<%= booking._id %>" method="POST" style="display:inline;">
+    <button class="btn btn-success btn-sm">
         Approve
-    </a>
+    </button>
+</form>
 
-    <a href="/admin/bookings/reject/<%= booking._id %>" class="btn btn-danger btn-sm">
+    <form action="/admin/bookings/reject/<%= booking._id %>" method="POST" style="display:inline;">
+    <button class="btn btn-danger btn-sm">
         Reject
-    </a>
+    </button>
+</form>
 
 <% } %>
 
 <% if (booking.status === "Approved") { %>
 
-    <a href="/admin/bookings/complete/<%= booking._id %>" class="btn btn-primary btn-sm">
+    <form action="/admin/bookings/complete/<%= booking._id %>" method="POST" style="display:inline;">
+    <button class="btn btn-primary btn-sm">
         Complete
-    </a>
+    </button>
+</form>
 
 <% } %>
 
