@@ -85,7 +85,7 @@ if (existingBooking) {
 
             returnDate: req.body.returnDate,
 
-            notes: req.body.notes,
+            specialRequests: req.body.specialRequests,
 
             totalAmount
 
